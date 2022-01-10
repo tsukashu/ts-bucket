@@ -1,0 +1,2 @@
+registry-finder
+https://github.com/wcxiao/scoop-bucket/blob/master/bucket/registryfinder.json

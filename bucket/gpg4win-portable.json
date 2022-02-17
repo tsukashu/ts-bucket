@@ -18,10 +18,6 @@
     ],
     "shortcuts": [
         [
-            "bin\\gpg.exe",
-            "gpg"
-        ],
-        [
             "bin\\Kleopatra.exe",
             "Kleopatra"
         ]

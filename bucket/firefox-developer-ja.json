@@ -1,0 +1,63 @@
+{
+  "version": "99.0b5",
+  "description": "Developer builds of Firefox: the popular open source web browser.",
+  "homepage": "https://www.mozilla.org/ja/firefox/developer/",
+  "license": "MPL-2.0",
+  "notes": [
+    "To set profile 'Scoop-Dev' as *DEFAULT*, or profiles/settings was lost after update:",
+    "  - Run 'Firefox Dev Profile Manager', choose 'Scoop-Dev' then click 'Start Firefox Developer Edition'.",
+    "  - Visit 'about:profiles' page in Firefox Dev to check *DEFAULT* profile.",
+    "For details: https://support.mozilla.org/ja/kb/profile-manager-create-and-remove-firefox-profiles"
+  ],
+  "architecture": {
+    "64bit": {
+      "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/99.0b5/win64/ja/Firefox%20Setup%2099.0b5.exe#/firefox-developer.7z",
+      "hash": "sha512:daa5413805c54a16f0a9a242b3d6bdc0e0784b334f48bf93b3b184f3f9d489f77b324a178928b06df211b558c3669d064a00514ff5362ff1fd83aea8bc1af950"
+    },
+    "32bit": {
+      "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/99.0b5/win32/ja/Firefox%20Setup%2099.0b5.exe#/firefox-developer.7z",
+      "hash": "sha512:e5226fc4118db11d7ab7014822b6c134a5f420e2d8a07f73d793d95f5d6262826358fcc35e42e443bc397f96c626f8a8d6fee5180288b9aec948a8b9d42641a1"
+    }
+  },
+  "extract_dir": "core",
+  "post_install": [
+    "firefox-dev -CreateProfile \"Scoop-Dev $persist_dir\\profile\"",
+    "$Addition = \"$persist_dir\\addition\"",
+    "if (Test-Path $Addition) {",
+    "  info 'Copying additional items...'",
+    "  Copy-Item -Path $Addition\\* -Destination $dir -Force -Recurse -ErrorAction SilentlyContinue",
+    "}"
+  ],
+  "bin": [
+    ["firefox.exe", "firefox-dev"],
+    ["firefox.exe", "firefox-developer"]
+  ],
+  "shortcuts": [
+    ["firefox.exe", "Firefox Dev"],
+    ["firefox.exe", "Firefox Dev Profile Manager", "-P"]
+  ],
+  "persist": "profile",
+  "checkver": {
+    "url": "https://aus5.mozilla.org/update/6/Firefox/93.0/_/WINNT_x86_64-msvc-x64/ja/aurora/_/_/_/_/update.xml",
+    "xpath": "/updates/update/patch/@URL",
+    "regex": "devedition-([\\db.]+)-"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/win64/ja/Firefox%20Setup%20$version.exe#/firefox-developer.7z",
+        "hash": {
+          "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win64/ja/$basename"
+        }
+      },
+      "32bit": {
+        "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/win32/ja/Firefox%20Setup%20$version.exe#/firefox-developer.7z",
+        "hash": {
+          "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win32/ja/$basename"
+        }
+      }
+    }
+  }
+}

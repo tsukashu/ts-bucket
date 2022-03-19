@@ -36,7 +36,7 @@
     ["firefox.exe", "Firefox Dev"],
     ["firefox.exe", "Firefox Dev Profile Manager", "-P"]
   ],
-  "persist": "profile",
+  "persist": ["distribution", "profile"],
   "checkver": {
     "url": "https://aus5.mozilla.org/update/6/Firefox/93.0/_/WINNT_x86_64-msvc-x64/ja/aurora/_/_/_/_/update.xml",
     "xpath": "/updates/update/patch/@URL",

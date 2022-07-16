@@ -3,3 +3,6 @@ https://github.com/wcxiao/scoop-bucket/blob/master/bucket/registryfinder.json
 
 bucket/gpg4win-portable.json
 https://github.com/ScoopInstaller/Extras/commit/64375affe548e0ecc66ab4aa05a27dd2a2abafc4#diff-b51a5fa38cd65d8044ebf03595e4cde4a3062a73c1985c83f67976d96d83b771
+
+firefox-developer.ja.json
+https://github.com/sweethenbit/scoop-henbit/blob/master/bucket/firefox-developer.ja.json
